@@ -35,7 +35,12 @@ function addToCart(id) {
   if (!product) {
     return;
   }
+  const existingProduct =  cart.find((item) => item.id === id)
+  if(existingProduct) {
+    existingProduct.qty++;
+  } else {
   cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+  }
   renderCart();
 }
 
